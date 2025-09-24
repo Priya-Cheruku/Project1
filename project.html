@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Simulator</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+
+        .dice {
+            font-size: 100px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            50% { transform: rotate(-20deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎲 Dice Simulator App 🎲</h1>
+    <form action="/" method="post" id="diceForm">
+        Number of sides: <input type="number" name="sides" value="6" min="2" required>
+        <button type="submit">Roll Dice</button>
+    </form>
+    <div id="result" class="dice">{{ result }}</div>
+
+    <script>
+        const form = document.getElementById('diceForm');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function() {
+            result.classList.remove('shake');
+            void result.offsetWidth;
+            result.classList.add('shake');
+        });
+    </script>
+</body>
+</html>
